@@ -1,3 +1,5 @@
+import 'package:doc_doc/core/helpers/extinctions.dart';
+import 'package:doc_doc/core/routing/app_routes.dart';
 import 'package:doc_doc/core/utils/app_colors.dart';
 import 'package:doc_doc/core/utils/app_text_styles.dart';
 import 'package:doc_doc/core/widgets/custom_button.dart';
@@ -37,7 +39,12 @@ class OnBoardingView extends StatelessWidget {
                 SizedBox(height: 24.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0.h),
-                  child: CustomButton(onPressed: () {}, text: 'Get Started'),
+                  child: CustomButton(
+                    onPressed: () {
+                      context.pushNamed(AppRoutes.login);
+                    },
+                    text: 'Get Started',
+                  ),
                 ),
               ],
             ),
