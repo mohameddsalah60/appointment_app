@@ -19,6 +19,7 @@ class DocApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Doc App',
         theme: ThemeData(
+          fontFamily: 'Inter',
           primaryColor: AppColors.mainBlue,
           scaffoldBackgroundColor: AppColors.backgroundScaffold,
         ),
