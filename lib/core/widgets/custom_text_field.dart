@@ -14,6 +14,7 @@ class CustomTextFromField extends StatelessWidget {
     this.fillColor,
     this.controller,
     this.onChanged,
+    this.validator,
   });
   final String hintText;
   final TextInputType? keyboardType;
@@ -23,18 +24,21 @@ class CustomTextFromField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
   final TextEditingController? controller;
+  final String? Function(String? value)? validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       onSaved: onSaved,
       onChanged: onChanged,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'This field is required .';
-        }
-        return null;
-      },
+      validator:
+          validator ??
+          (value) {
+            if (value == null || value.isEmpty) {
+              return 'This field is required .';
+            }
+            return null;
+          },
       keyboardType: keyboardType,
       obscureText: obscureText,
       decoration: InputDecoration(

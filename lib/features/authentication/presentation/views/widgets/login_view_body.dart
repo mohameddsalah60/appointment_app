@@ -1,9 +1,12 @@
 import 'package:doc_doc/core/widgets/custom_button.dart';
 import 'package:doc_doc/features/authentication/presentation/views/widgets/text_fields_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../cubits/cubit/login_cubit.dart';
 import 'dont_have_an_account.dart';
+import 'login_bloc_listenr.dart';
 import 'login_body_header.dart';
 import 'login_remember_me_and_forget_password.dart';
 import 'sign_in_divider.dart';
@@ -24,9 +27,15 @@ class LoginViewBody extends StatelessWidget {
             LoginBodyHeader(),
             SizedBox(height: 36.h),
             TextFieldsLogin(),
+            SizedBox(height: 16.h),
             RememberMeAndForgetPassword(),
             SizedBox(height: 30.h),
-            CustomButton(onPressed: () {}, text: 'Login'),
+            CustomButton(
+              onPressed: () {
+                context.read<LoginCubit>().emitLoginStates();
+              },
+              text: 'Login',
+            ),
             SizedBox(height: 30.h),
             SignInDivider(),
             SizedBox(height: 20.h),
@@ -35,6 +44,7 @@ class LoginViewBody extends StatelessWidget {
             TermsAndConditionsText(),
             SizedBox(height: 24.h),
             DontHaveAnAccount(),
+            LoginBlocListenr(),
           ],
         ),
       ),
